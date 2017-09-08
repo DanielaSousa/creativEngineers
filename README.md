@@ -8,7 +8,7 @@ The project was presented in Sunset Hackathelon 2017, and the main goal was to p
 Main steps:
 
 1 -  detect the human's move using a webcam and image processing with openCV  
-2 - using a a algorithm that has in count all the moves played by the human selects a gesture that is performed by the robot using the hydraulic valves to control the gripper.  
+2 - using an algorithm that, depending of all the moves previous played by the human, selects a gesture that is then performed by the robot using the hydraulic valves to control the gripper.  
 3 - When the player stops the game by pressing the "stop" button in the Qt interface, the robot decides who wins and acts acordingly to it.  
 4 - If the player won then the robot searches for an apple picking it up after and rewarding the player  
 5 - In all this main steps the graphic interface is showing all the rules and  what is appening in that stage
