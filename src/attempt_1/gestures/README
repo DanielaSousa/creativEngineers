@@ -1,0 +1,54 @@
+This is a basic gesture recognition software for the Kinect.
+The hand is put in front of the camera, and the Kinect identifies which fingers are open and which are closed.
+
+Each finger has a range of angles it can be from the center of the palm.
+If, for instance, any fingertip found is in the angle region of the thumb, the thumb is considered open.
+
+
+
+Dependencies:
+-python (2.7+) (not python 3+)
+-libfreenect
+-opencv (3.0+) (for python)
+
+
+To run, type into console:
+  python main.py
+
+
+
+Implemented features:
+  -produce mask only of close objects
+  -finds contour with area closest to area of hand, if within error bounds then considered to be hand
+  -track palm of hand as circle, use as reference point on screen
+    -find convexity defects of hand and bottommost point of hand
+    -draw smallest encompassing circle around these points, is palm (see circles.py)
+  -hand class
+    -calibration function for hand
+      -get contour polygon, points further from center than adjacent points on polygon = fingertips
+      -highest point is middle finger, to left is index, etc.
+      -get region that thumb is in when open, region that pinky is in when open, etc.
+        -get angles of fingers from palm center, angles between fingers = boundaries to finger regions
+        -store list of ranges of angles that each finger is within when open
+          -eg. {thumb: [lowest ang of thumb, max ang of thumb], ...}
+    -find all viable points on polygon to be finger
+      -if far away enough from palm and angle to palm center is within a certain finger's angle region, that finger is considered open
+      -if no finger point in that finger's angle region, that finger is considered closed
+    -return dict of fingers and bools of whether they are open or not
+  -HandStats class
+    -augmented hand class, able to take samples of fingers and hand position at regular intervals over time
+      -sampling allows for ignorance of random image noise
+    -can use sampling to infer hand velocity and acceleration vectors
+      -acceleration method is inaccurate (assumes acc is constant)
+  -able to detect when no hand is present
+    -Hand and HandStats methods to get open fingers, hand pos, etc. return None if no hand detected
+    -no longer detects contours if beyond a certain distance away
+
+
+
+Planned features:
+  -deal with hand rotation to sides (?)
+    -recalibrate if hand rotates a certain amount
+  -gestures used to operate different programs
+    -mouse
+    -basic game (?)
