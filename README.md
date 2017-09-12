@@ -3,7 +3,7 @@ keywords : Motofil , Fanuc , Cooperative robot, verdinho, sunset hackathon 2017,
 
 During 72 hours we were challenged by Motofil to design and implement a robotized application that shows how secure Cooperative Fanuc robots can be.
 
-The project was presented in Sunset Hackathelon 2017, and the main goal was to put "Verdinho" playing rock paper scissors with a person, rewarding it in the end. 
+The project was presented in Sunset Hackathon 2017, and the main goal was to put "Verdinho" playing rock paper scissors with a person, rewarding it in the end. 
 
 Main steps:
 
